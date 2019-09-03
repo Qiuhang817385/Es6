@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- http://es6.ruanyifeng.com/#docs/iterator -->
+    <!-- 表示“集合”的数据结构
+        数组（Array）和对象（Object）
+        Map和Set
+        比如数组的成员是Map，Map的成员是对象
+        遍历器（Iterator）,一种接口，为各种不同的数据结构提供统一的访问机制
+        任何数据结构只要部署 Iterator 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）
+    
+        作用:为各种数据结构，提供一个统一的、简便的访问接口,
+        二是使得数据结构的成员能够按某种次序排列
+        新的遍历命令for...of循环
+
+
+        原生具备iterator接口的数据(可用for of遍历)
+      1、Array
+      2、arguments
+      3、set容器
+      4、map容器
+      5、String
+    -->
+    <script>
+        // 模拟iterator接口
+        function mockIterator(arr) {
+            let nextIndex = 0;
+            return {
+                // 这里产生了闭包,内部函数引用外部变量  
+                next: function () {
+                    return nextIndex < arr.length ? { value: arr[nextIndex++], done: false } : { value: undefined, done: true }
+                }
+            }
+        }
+
+        let arr = [1, 2, 3, 4, 5];
+        let iteratorObj = mockIterator(arr);
+        console.log(iteratorObj)
+        console.log('----------------')
+        console.log(iteratorObj.next());
+        console.log(iteratorObj.next());
+        console.log(iteratorObj.next());
+
+        let str = 'abcdefg';
+        for (let iterator of str) {
+            console.log(iterator);
+        }
+
+        let arr3 = [1, 2, 'kobe', true];
+        arr3.foo = 'fo1';
+        for (const iterator of arr3) {
+            console.log(iterator);
+        }
+        // for...of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性
+        // 不会返回fo1
+
+
+        // arguments
+        // var fun = ()=>{
+        // 箭头函数不能使用arguments?????
+        /* 
+            以下三个变量在箭头函数之中也是不存在的，
+            指向外层函数的对应变量：arguments、super、new.target
+            不能用call()、apply()、bind()这些方法去改变this的指向
+        */
+        function fun() {
+            for (let iterator of arguments) {
+                console.log(iterator)
+            }
+        }
+        fun(1, 3, 4, '123');
+        // 对象没有部署iterator接口
+
+
+        // 关于对象的不是iterator接口,和yield*,还有Generator函数,都在之后再写.,关于set和map的拓展
+
+        // 注意for of和for in 的区别
+        // 这两者,for in 可以遍历之后添加字符串的数组,但是for of不能
+        // for in 只会获得键名,不能获取键值,for of可以获取键值
+
+
+        // Object.keys方法?
+
+        // http://es6.ruanyifeng.com/#docs/iterator
+        // 关于几种遍历语法的比较
+        // for, foreach,for in,for of
+
+
+// interns实习生
+// unpaid interns 没有薪水的实习生,entitled 有资格
+// benchmark 基准
+// a right of passage 一种权利. audacity鲁莽大胆无礼
+
+
+        // for和foreach,为了遍历数组,但是foreach中途不可以停下来
+        // for in为了遍历   对象,会自动遍历后添加的字段
+        // for of遍历   数组  ,可以使用break,continue,return,遍历对象需要添加接口
+
+    </script>
+
+</body>
+
+</html>
