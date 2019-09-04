@@ -1,0 +1,114 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const { log } = console;
+        // for和foreach,为了遍历数组,但是foreach中途不可以停下来
+        // for in为了遍历   对象,会自动遍历后添加的字段
+        // for of遍历   数组  ,可以使用break,continue,return,遍历对象需要添加接口
+
+
+        var person = {
+            'name': 'qiuhang',
+            'age': 16,
+            'gender': '男'
+
+        }
+        person.pro = '电脑';
+        for (const key in person) {
+            if (person.hasOwnProperty(key)) {
+                const element = person[key];
+                log(element);
+            }
+        }
+
+        let map = new Map();
+
+        let o = { p: 'hello' };
+
+        map.set(o, 'content');
+        log(map.get(o));//content;
+        log(map.has(o));//true;返回Boolean值
+        // m.delete(o) // true;返回Boolean值
+
+        // 能力配不上野心?别把最好的时光浪费在爱情上面
+
+
+        let map1 = new Map([ ['name','张三'],['titl','作者'] ]);
+        let map2 = new Map();
+        map2.set('name','邱航');
+        map2.set('age',19);
+        log(map2.get('name'));
+
+
+        // java式的map,使用for of和foreach来遍历
+        let map3 = new Map();
+        map3.set('1',{'name':'邱航','age':'20'});
+        map3.set('2',{'name':'孜一','age':'22'});
+        map3.set('3',{'name':'张莹','age':'24'});
+        log(map3.get('1'));
+        for (const iterator of map3) {
+            log(iterator);
+            // ["1", {…}],遍历出来是一个数组
+        }
+        log('---------------------------------')
+        for (const key in map3) {
+            if (map3.hasOwnProperty(key)) {
+                const element = map3[key];
+                log(element);
+            }
+        }
+        // 打印不出来,不能使用for in遍历
+        log('---------------------------------')
+        map3.forEach(element => {
+            log(element);
+            // {name: "邱航", age: "20"}
+        });
+
+
+        // map接受数组作为参数
+        let items2 = [
+        ['name', '张三'],
+        ['title', 'Author']
+        ];
+        let map5 = new Map();
+        items2.forEach(
+            function([key,value]){
+            // function(...[key,value]){
+                // 3点运算符传入进来的是数组
+                // [[key,value]     ]
+                log(key+':'+value);
+                return map5.set(key,value);
+            }
+            
+
+        )
+        log(map5);
+        // Map(2) {"name" => "张三", "title" => "Author"}
+        log(map5.entries());
+        // MapIterator {"name" => "张三", "title" => "Author"}
+        log(map5.get('name'));//张三
+
+        // Map构造函数接受数组作为参数，实际上执行的是下面的算法。
+        // 9.4
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

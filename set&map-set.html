@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // http://es6.ruanyifeng.com/#docs/set-map
+
+        // rest 参数（形式为...变量名)
+        // rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。
+        // 用来代替arguments对象
+        const {log} = console;
+
+        let s = new Set();
+        [1,12,31,23,54,32,1].forEach(x => s.add(x));
+        for (const iterator of s) {
+            // 数组不会添加重复值
+            log(iterator);
+        }
+
+        //数组去重
+        let a = [1,2,3,1,2,42,54,54,23];
+        log([...new Set(a)]);
+        // [...new Set(a)];
+        //字符去重
+        let b = 'abcabsdkdsjee';
+        log([...new Set(b)].join(''));
+
+        // 两个对象总是不相等的。
+        // 由于两个空对象不相等，所以它们被视为两个值。set.add({});set.add({});
+
+        // s.add,s.delete,s.has(),s.clear();
+
+        // 把set转换成数组**********************
+        // const items = new Set([1,2,3,4,5]);
+        // const array1 = Array.from(items);
+
+        // 数组去重的方法
+        function dedupe(array){
+            return Array.from(new Set(array));
+        }
+        dedupe([1,1,3,2]);
+        // [...new Set(a)];
+        // 两个本质上没有什么区别
+
+     let set = new Set(['red', 'green', 'blue']);
+    
+    for (const iterator of set.keys()) {
+        log(iterator)
+    }
+    for (const iterator of set.values()) {
+        log(iterator)
+    }
+    for (const iterator of set.entries()) {
+        log(iterator)
+    }
+    for (const iterator of set) {
+        log(iterator)
+    }
+
+    // set.forEach((value, key) => console.log(key + ' : ' + value))
+    // red:red,~,~  
+    
+    /* 
+        let set = new Set([1, 2, 3]);
+        set = new Set([...set].map(x => x * 2));
+        返回Set结构：{2, 4, 6}
+
+        let set = new Set([1, 2, 3, 4, 5]);
+        set = new Set([...set].filter(x => (x % 2) == 0));
+        返回Set结构：{2, 4}
+     */
+    //  set的交并补,可以很容易实现,但是原来的本来就不能含有重复值,到底还是特殊的
+
+
+
+    
+    </script>
+</body>
+</html>
