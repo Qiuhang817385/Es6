@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const {log} = console;
+        /*  generator
+            解决异步编程的方案之一,内部封装了不同的状态
+            用来生成遍历器对象,
+            可以暂停函数,yield可以暂停,next方法可以启动
+            
+            特点    function与函数名之间有一个*号.
+            内部用yield表达式来定义不同的状态
+
+            function* Fn(){
+                let result = yield 'hello';//状态值是hello
+                yield 'generator';//    状态值是generator
+            }
+        
+
+        symbol属性
+        for in 和 for of循环不会遍历到这个属性
+
+         */
+         function* fun(){
+             log('开始执行');
+             let result  = yield 'hello';
+             log(result)//undefined     
+             log('暂停后再次执行')
+             yield 'generator';
+             log('执行结束');
+             return '结果'
+         }
+         let MG = fun();
+         log(MG.next());
+         log(MG.next('2112121'));   //这个时候会把此串作为第一个的返回值,此时上面result返回的就是2112121
+         log(MG.next());
+
+         //对象的symbol.iterator属性,指向遍历器对象
+         let obj = {username:'qiuhang',age:18};
+         obj[Symbol.iterator] = function* myTest(){
+             yield 1
+             yield 2
+             yield 3
+         }
+        //  age: 18
+        // username: "qiuhang"
+        // Symbol(Symbol.iterator): ƒ* myTest()
+         log(obj);
+         for (const iterator of obj) {
+             log(iterator)//1   2   3
+         }
+
+
+
+    </script>
+</body>
+</html>
