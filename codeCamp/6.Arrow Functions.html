@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  we often don't need to name our functions, especially when passing a function as an argument to another function
+        // 有时候不需要有函数名字,特别是传递一个函数当成另一个函数的参数的时候
+
+        // we do not reuse them anywhere else.
+        // syntactic语法
+        // sugar 糖
+        // brackets 括号
+        const myFunc = function () {
+            const myVar = "value";
+            return myVar;
+        }
+
+        const myFunc2 = () => {
+            const myVar2 = "value";
+            return myVar2;
+        }
+
+
+        const myFunc3 = () => "value";
+
+
+
+        var magic = () => new Date();
+    </script>
+</body>
+
+</html>

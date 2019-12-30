@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const declaration alone doesn't really protect your data from mutation.
+        // const并不能真正保护你的数据
+        // 确保数据不被修改,   JS提供了一个属性
+        // To ensure your data doesn't change, JavaScript provides a function Object.freeze to prevent data mutation.
+        // you can no longer add, update, or delete properties from it
+        let obj = {
+            name: "FreeCodeCamp",
+            review: "Awesome"
+        };
+        Object.freeze(obj);
+        obj.review = "bad"; // will be ignored. Mutation not allowed
+        obj.newProp = "Test"; // will be ignored. Mutation not allowed
+        console.log(obj);
+        // { name: "FreeCodeCamp", review:"Awesome"}
+    </script>
+</body>
+
+</html>
