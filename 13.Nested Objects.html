@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const user = {
+            qiuhang: {
+                age: 15,
+                weight: 120
+            },
+            qiuhang2: {
+                age: 15,
+                weight: 120
+            },
+            qiuhang3: {
+                age: 15,
+                weight: 120
+            }
+        }
+        const {
+            qiuhang: {
+                age,
+                weight
+            }
+        } = user;
+        const {
+            qiuhang2: {
+                age: qiuhang2Age,
+                weight: qiuhang2Weight
+            }
+        } = user;
+
+
+
+        const LOCAL_FORECAST = {
+            yesterday: {
+                low: 61,
+                high: 75
+            },
+            today: {
+                low: 64,
+                high: 77
+            },
+            tomorrow: {
+                low: 68,
+                high: 80
+            }
+        };
+
+        // change code below this line
+
+        const {
+            today: {
+                low: lowToday,
+                high: highToday
+            }
+        } = LOCAL_FORECAST;
+
+        // change code above this line
+
+        console.log(lowToday); // should be 64
+        console.log(highToday); // should be 77
+    </script>
+</body>
+
+</html>

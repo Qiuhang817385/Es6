@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- In some situations involving array destructuring, we might want to collect the rest of the elements into a separate array. -->
+    <script>
+        // The result is similar to Array.prototype.slice(), as shown below:
+        const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
+        console.log(a, b); // 1, 2
+        console.log(arr); // [3, 4, 5, 7]
+        // . The rest element only works correctly as the last variable in the list. 
+        // 只有...a在最后的时候才生效
+        // , you cannot use the rest parameter to catch a subarray that leaves out last element of the original array.
+        // 您不能使用rest参数来捕获一个将原始数组的最后一个元素遗漏在外的子数组
+        // 就是,[...arr,2] = [eqwewq.123.123.321
+
+
+
+        const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        function removeFirstTwo(list) {
+            "use strict";
+            // change code below this line
+            const [, , ...arr] = list; // change this
+            // change code above this line
+            return arr;
+        }
+        const arr = removeFirstTwo(source);
+        console.log(arr); // should be [3,4,5,6,7,8,9,10]
+        console.log(source); // should be [1,2,3,4,5,6,7,8,9,10];
+        
+    </script>
+
+</body>
+
+</html>
