@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- This allowed you to make multiple functions and variables available for use in other files.
+        这允许您在其他文件中使用多个函数和变量。
+        if only one value is being exported from a file. It is also used to create a fallback value for a file or module.
+        如果从文件中只导出一个值。它还用于为文件或模块创建回退值。
+
+        为模块创建一个返回值
+
+    -->
+    <script>
+        // named function
+        export default function add(x, y) {
+            return x + y;
+        }
+
+        // anonymous function
+        export default function (x, y) {
+            return x + y;
+        }
+        // Additionally, you cannot use export default with var, let, or const
+    </script>
+</body>
+
+</html>

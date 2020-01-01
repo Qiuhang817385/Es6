@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    A promise has three states:
+    pending 挂起
+    fulfilled 完成
+    rejected 拒绝
+    is forever stuck in the pending state
+    永远处于挂起状态
+    because you did not add a way to complete the promise
+    the resolve and reject parameters given to the promise argument are used to do this.
+    resolve 和reject就是用来告诉promise接下来的状态是什么
+
+    const myPromise = new Promise((resolve, reject) => {
+    if(condition here) {
+    resolve("Promise was fulfilled");
+    } else {
+    reject("Promise was rejected");
+    }
+    });
+    <script>
+        // argument can really be anything
+        // Often, it might be an object
+        // that you would use data from, to put on your website or elsewhere.
+        // 通常这个条件是一个对象,这个对象是你使用它的数据来放到网站任何的地方
+        const makeServerRequest = new Promise((resolve, reject) => {
+            // responseFromServer represents a response from a server
+            let responseFromServer;
+
+            if (responseFromServer) {
+                // change this line
+                resolve('We got the data');
+            } else {
+                // change this line
+                reject('Data not received');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
