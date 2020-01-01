@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Write Concise Object Literal Declarations Using Object Property Shorthand
+        Object Property Shorthand对象属性简写
+        使用对象属性简写写出简洁的对象文字声明
+
+    -->
+    <script>
+        const getMousePosition = (x, y) => ({
+            x: x,
+            y: y
+        });
+
+        //  the syntactic sugar to eliminate the redundancy of having to write x: x.
+        // 就是,属性名假如相同,那么就可以直接写
+        const getMousePosition2 = (x,y)=>{{x,y}}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES5方式
+        const person = {
+            name: "Taylor",
+            sayHello: function () {
+                return `Hello! My name is ${this.name}.`;
+            }
+        };
+        // ES6方式
+        // You can remove the function keyword 
+        const person2 = {
+            name: "Taylor",
+            sayHello() {
+                return `Hello! My name is ${this.name}.`;
+            }
+        };
+    </script>
+</body>
+
+</html>

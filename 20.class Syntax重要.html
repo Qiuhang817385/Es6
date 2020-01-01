@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Use class Syntax to Define a Constructor Function
+        使用类去定义构造函数
+        ES6 provides a new syntax to create objects, using the class keyword.
+
+        class syntax is just syntax
+
+        JavaScript的类不同于Java和python
+        and not a full-fledged class-based implementation of an object-oriented paradigm
+        orient      东方
+        oriented    面向
+        fledged     成熟的
+
+
+        in ES5,we usually define a constructor function and use the new keyword to instantiate an object.
+        instantiate实例化
+
+        而不是一个完全的面向对象范例的基于类的实现
+
+    
+    -->
+    <script>
+        // 构造函数
+        var SpaceShuttle = function (targetPlanet) {
+            this.targetPlanet = targetPlanet;
+        }
+        // new一个实例
+        var zeus = new SpaceShuttle('Jupiter');
+
+        // The class syntax simply replaces the constructor function creation:
+        // class表达式简单的代替了构造函数的创建
+
+
+        // 如果函数对象转成一个类,那么写在类当中的其他东西又该是什么?
+
+        // 需要注意的是，class关键字声明了一个新函数，并向其添加了一个构造函数。此构造函数在调用new以创建新对象时调用。
+        // It should be noted that the class keyword declares a new function, to which a constructor is added. This constructor is invoked when new is called to create a new object.
+
+
+        class SpaceShuttle2 {
+            constructor(targetPlanet) {
+                this.targetPlanet = targetPlanet;
+            }
+        }
+
+        var foo = function (targetPlanet) {
+            this.targetPlanet = targetPlanet;
+        }
+        class foo2 {
+            constructor(targetPlanet) {
+                this.targetPlanet = targetPlanet;
+            }
+        }
+        class Header {
+
+            // const {a} = this.props;
+        }
+        var
+        // 一点一点来,总会实现自己的目标的
+        const zeus = new SpaceShuttle('Jupiter');
+
+        // Notes:
+
+        //     UpperCamelCase should be used by convention for ES6 class names, as in SpaceShuttle航天 used above.
+        // 类名字应该使用大写的驼峰命名法
+        // The constructor method is a special method
+        // for creating and initializing an object created with a class.
+        // You will learn more about it in  the Object Oriented Programming section of
+        //  the JavaScript Algorithms And Data Structures Certification.
+        // JavaScript算法和数据结构认证
+        /* Alter code below this line */
+        class Vegetable {
+            constructor(parameter1) {
+                this.name = parameter1;
+            }
+        }
+        /* Alter code above this line */
+
+        const carrot = new Vegetable('carrot');
+        console.log(carrot.name); // => should be 'carrot'
+    </script>
+</body>
+
+</html>

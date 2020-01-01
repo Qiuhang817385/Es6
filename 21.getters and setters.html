@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    You can obtain values from an object and set the value of a property within an object.
+
+    These are classically called getters and setters.
+
+    <script>
+        // Getter functions are meant to simply return (get) the value of an object's private variable to the user without the user directly accessing the private variable
+        // Getter函数意味着简单地向用户返回(get)对象私有变量的值，而不需要用户直接访问私有变量
+        // Setter functions are meant to modify (set) the value of an object's private variable based on the value passed into the setter function. 
+        // Setter函数意味着根据传入Setter函数的值修改(设置)对象的私有变量的值。
+        // This change could involve calculations, or even overwriting the previous value completely.
+        class Book {
+            constructor(author) {
+                this._author = author;
+            }
+            //getter
+            get writer() {
+                return this._author;
+            }
+            //setter
+            set writer(updateAuthor) {
+                this._author = updateAuthor;
+            }
+        }
+
+        const lol = new Book('ano');
+        console.log(lol.writer);
+        lol.writer = 'wut';
+        console.log(lol.writer);
+        // invoke 调用
+        // Getters and setters are important because they hide internal implementation details
+
+        // precede 提前
+        /* 
+        It is convention to precede the name of a private variable with an underscore (_). However, the practice itself does not make a variable private.
+        按照惯例，在私有变量名之前加上下划线(_)。然而，实践本身并没有将变量设为私有。
+
+
+         */
+        /* 
+                This is the power of a getter and a setter. You are creating an API for another user, who can get the correct result regardless of which one you track.
+        In other words, you are abstracting implementation details from the user.
+        这就是getter和setter的威力。您正在为另一个用户创建一个API，无论您跟踪哪个用户，该用户都可以获得正确的结果。
+        换句话说，您正在从用户抽象实现细节。 */
+        /* Alter code below this line */
+        class Thermostat {
+            constructor(Fahrenheit) {
+                this._Fahrenheit = Fahrenheit;
+            }
+            get temperature() {
+                return (this._Fahrenheit - 32) * 5 / 9;
+            }
+            set temperature(update) {
+                this._Fahrenheit = (update * 9) / 5 + 32;
+            }
+        }
+        /* Alter code above this line */
+
+        const thermos = new Thermostat(76); // setting in Fahrenheit scale
+        let temp = thermos.temperature; // 24.44 in C
+        thermos.temperature = 26;
+        temp = thermos.temperature; // 26 in C
+    </script>
+</body>
+
+</html>
