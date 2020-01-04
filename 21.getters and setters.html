@@ -32,6 +32,30 @@
                 this._author = updateAuthor;
             }
         }
+        // 闭包实现get和set
+        ;(function(){
+            var _secret = 0;
+            getValue = function () {  
+                return _secret;
+            };
+            setValue = function(U){
+                _secret = U;
+            }
+        })()
+        // 调用
+        getValue();
+        setValue(3);
+        getValue();
+
+
+        // 对比闭包
+        // 对比闭包
+        // 对比闭包
+        // 对比闭包
+        // 对比闭包
+        // 对比闭包
+        // 对比闭包访问私有变量
+
 
         const lol = new Book('ano');
         console.log(lol.writer);
