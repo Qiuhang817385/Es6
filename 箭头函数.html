@@ -1,20 +1,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 
 
         箭头函数----解构赋值---Generator /  Iterator 接口
 
-
+      箭头函数的原理是什么
+      其实就是
+      function(){}.bind(this)
      -->
 </head>
 
 <body>
-    <!-- 
+  <!-- 
         箭头函数可以与变量解构结合使用。
         const full = ({ first, last }) => first + ' ' + last;
         // 等同于
@@ -40,67 +42,70 @@
         函数定义时候所在的对象
         
     -->
+
+  <script>
+    const {
+      log
+    } = console;
+
+    const head = (head, ...tail) => {
+      log([head, tail])
+    };
+    head(1, 2, 3, 12, 31, 21);
+    // [1,Array(5)];
+    var s2 = 100;
+
+    function Timer() {
+      this.s1 = 0;
+      this.s2 = 1;
+
+      setInterval(() => {
+        this.s1++
+      }, 1000)
+      // this指向timer
+      setInterval(function () {
+        this.s2++;
+      }, 1000);
+      // setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+      // 由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+
+    }
+    var timer = new Timer();
+    log(timer.s1)
+    setTimeout(() => log(timer.s1), 3100) //3
+    setTimeout(() => log(timer.s2), 3100) //1
+    // 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+    /* 
+        上面代码中，Timer函数内部设置了两个定时器，分别使用了箭头函数和普通函数。
+        前者的this绑定定义时所在的作用域（即Timer函数），
+        后者的this指向运行时所在的作用域（即全局对象）。
+        所以，3100 毫秒之后，timer.s1被更新了 3 次，而timer.s2一次都没更新。
     
-    <script>
-        
-        
-        const { log } = console;
-        
-        const head = (head,...tail) => {  log([head,tail])  };
-        head(1,2,3,12,31,21);
-        // [1,Array(5)];
-        var s2 = 100;
+    */
 
-        function Timer() {
-            this.s1 = 0;
-            this.s2 = 1;
+    function Timer2() {
+      this.s1 = 0;
 
-            setInterval(() => { this.s1++ }, 1000)
-            // this指向timer
-            setInterval(function () {
-                this.s2++;
-            }, 1000);
-            // setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
-            // 由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数。
+      setInterval(() => {
+        return this.s1 = Math.floor(Math.random() * 100 + 1);
+      }, 1000)
 
-        }
-        var timer = new Timer();
-        log(timer.s1)
-        setTimeout(() => log(timer.s1), 3100)      //3
-        setTimeout(() => log(timer.s2), 3100)      //1
-        // 函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
-        /* 
-            上面代码中，Timer函数内部设置了两个定时器，分别使用了箭头函数和普通函数。
-            前者的this绑定定义时所在的作用域（即Timer函数），
-            后者的this指向运行时所在的作用域（即全局对象）。
-            所以，3100 毫秒之后，timer.s1被更新了 3 次，而timer.s2一次都没更新。
-        
-        */
-
-        function Timer2() {
-            this.s1 = 0;
-
-            setInterval(() => {
-                return this.s1 = Math.floor(Math.random() * 100 + 1);
-            }, 1000)
-
-        }
-        var timer2 = new Timer2();
-        // setTimeout(()=>log(timer2.s1),1100)
-        // setTimeout(()=>log(timer2.s1),2100)
-        // setTimeout(()=>log(timer2.s1),3100)
+    }
+    var timer2 = new Timer2();
+    // setTimeout(()=>log(timer2.s1),1100)
+    // setTimeout(()=>log(timer2.s1),2100)
+    // setTimeout(()=>log(timer2.s1),3100)
 
 
-        /*
+    /*
 
-        const plus1 = a => a + 1;
-        const mult2 = a => a * 2;
-        mult2(plus1(5))
-        管道
-        */
-
-    </script>
-    <!-- 
+    const plus1 = a => a + 1;
+    const mult2 = a => a * 2;
+    mult2(plus1(5))
+    管道
+    */
+  </script>
+  <!-- 
             
             箭头函数的this看外层的是否有函数，
         如果有，外层函数的this就是内部箭头函数的this，
@@ -128,7 +133,7 @@
 
          -->
 
-    <!-- 不应该使用箭头函数的场景
+  <!-- 不应该使用箭头函数的场景
                 定义对象的方法,且该方法内部包括this。
             const cat = {
                 jumps:()=>{ this.lives-- };
