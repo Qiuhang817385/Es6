@@ -2,47 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 
 <body>
-    <script>
-        // Use the Spread Operator to Evaluate Arrays In-Place在某些地方
-        // 使用Spread操作符对数组进行计算
+  <script>
+    // Use the Spread Operator to Evaluate Arrays In-Place在某些地方
+    // 使用Spread操作符对数组进行计算
 
-        // The ES5 code below uses apply() to compute the maximum value in an array:
-        var arr = [6, 89, 3, 45];
-        var maximus = Math.max.apply(null, arr); // returns 89
+    // The ES5 code below uses apply() to compute the maximum value in an array:
+    var arr = [6, 89, 3, 45];
+    var maximus = Math.max.apply(null, arr); // returns 89
 
-        // We had to use Math.max.apply(null, arr) because Math.max(arr) returns NaN.
+    // We had to use Math.max.apply(null, arr) because Math.max(arr) returns NaN.
 
-        // comma-separated arguments,逗号分隔参数,
-        // Math.max() expects comma-separated arguments, but not an array.
+    // comma-separated arguments,逗号分隔参数,
+    // Math.max() expects comma-separated arguments, but not an array.
 
-        const arr2 = [6, 89, 3, 45];
-        const maximus2 = Math.max(...arr2); // returns 89
-
-
-        /* 
-        the spread operator only works in-place, 
-
-            like in an argument to a function,当成一个函数的参数
-            or in an array literal.或者数组文字
-         */
-
-        //  const spreaded = ...arr; // will throw a syntax error
+    const arr2 = [6, 89, 3, 45];
+    // 放置在实参上面的是拓展参数
+    const maximus2 = Math.max(...arr2); // returns 89
 
 
-        // Copy all contents of arr1 into another array arr2 using the spread operator.
-        const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
-        let arr2;
+    /* 
+    the spread operator only works in-place, 
 
-        arr2 = [...arr1]; // change this line
-        // 复制数组
-    </script>
+        like in an argument to a function,当成一个函数的参数
+        or in an array literal.或者数组文字
+     */
+
+    //  const spreaded = ...arr; // will throw a syntax error
+
+
+    // Copy all contents of arr1 into another array arr2 using the spread operator.
+    const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+    let arr2;
+
+    arr2 = [...arr1]; // change this line
+    // 复制数组
+  </script>
 </body>
 
 </html>

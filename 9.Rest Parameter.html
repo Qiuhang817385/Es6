@@ -2,39 +2,40 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 
 <body>
-    <!-- take a variable number of arguments.
+  <!-- take a variable number of arguments.
             取可变数量的参数。
             allows us to apply map(), filter() and reduce() on the parameters array.
             允许我们在参数数组上应用map()、filter()和reduce()。
     -->
-    <script>
-        function howMany(...args) {
-            return "You have passed " + args.length + " arguments.";
-        }
-        console.log(howMany(0, 1, 2)); // You have passed 3 arguments.
-        console.log(howMany("string", null, [1, 2, 3], {})); // You have passed 4 arguments.
+  <script>
+    // 放置在形参上面的是不定参数
+    function howMany(...args) {
+      return "You have passed " + args.length + " arguments.";
+    }
+    console.log(howMany(0, 1, 2)); // You have passed 3 arguments.
+    console.log(howMany("string", null, [1, 2, 3], {})); // You have passed 4 arguments.
 
 
 
-        const sum = (x, y, z) => {
-            const args = [x, y, z];
-            return args.reduce((a, b) => a + b, 0);
-        }
+    const sum = (x, y, z) => {
+      const args = [x, y, z];
+      return args.reduce((a, b) => a + b, 0);
+    }
 
-        const sum2 = (...args) => {
-            const args1 = args;
-            return args1.reduce((a, b) => a + b, 0);
-        }
-        console.log(sum(1, 2, 3)); // 6
-        console.log(sum2(1, 2, 3)); // 6
-    </script>
+    const sum2 = (...args) => {
+      const args1 = args;
+      return args1.reduce((a, b) => a + b, 0);
+    }
+    console.log(sum(1, 2, 3)); // 6
+    console.log(sum2(1, 2, 3)); // 6
+  </script>
 </body>
 
 </html>
